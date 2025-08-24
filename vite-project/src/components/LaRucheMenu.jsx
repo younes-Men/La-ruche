@@ -1,6 +1,7 @@
 import React from "react"
 import { Card } from "./ui/card"
 import { useState } from "react"
+import Logo from "../image/laruche.png"
 
 const LaRucheMenu = () => {
   const [expandedSections, setExpandedSections] = useState({})
@@ -139,29 +140,31 @@ const LaRucheMenu = () => {
         { name: "Red bull", price: "22 dhs" },
       ],
     },
-    glaces: {
+     glaces: {
       title: "NOS GLACES",
       icon: "🍦",
       items: [
-        { name: "Entremet", price: "120 dhs/Kg" },
-        { name: "Entremet Mousse", price: "90 dhs/Kg" },
-        { name: "Entremet Américain", price: "120 dhs/Kg" },
-        { name: "Gateaux Marocains amandes", price: "120 dhs/Kg" },
-        { name: "Sablé Amandes", price: "60 dhs/Kg" },
+        { name: "Composez votre coupe sur place", price: "", description: "" },
         { name: "Coupe 2 boules", price: "14 dhs" },
         { name: "Coupe 3 boules", price: "18 dhs" },
         { name: "Coupe LA RUCHE", price: "20 dhs", description: "4 boules au choix" },
+        { name: "À Emporter", price: "", description: "" },
+        { name: "1 boule", price: "05 dhs" },
+        { name: "2 boules", price: "10 dhs" },
+        { name: "3 boules", price: "14 dhs" },
+        { name: "4 boules", price: "17 dhs" },
+        { name: "1 Kg de Glace", price: "80 dhs" },
       ],
     },
     milkshakes: {
       title: "MILK SHAKE",
       icon: "🥤",
-      items: [{ name: "Crème glacée frappée au lait parfum au choix", price: "18 dhs" }],
+      items: [{ name: "Crème glacée frappée au lait ", price: "18 dhs", description: "parfum au choix" }],
     },
     orangeshake: {
       title: "ORANGE SHAKE",
       icon: "🍊",
-      items: [{ name: "Glace sorbet frappée au jus d'orange parfum au choix", price: "18 dhs" }],
+      items: [{ name: "Glace sorbet frappée au jus d'orange ", price: "18 dhs", description: "parfum au choix" }],
     },
     jus: {
       title: "NOS JUS DE FRUITS",
@@ -236,26 +239,22 @@ const LaRucheMenu = () => {
         }}
       />
 
-      <header className="bg-pink-600 text-white py-6 px-4 relative z-10">
+       <header className="bg-pink-800 text-white py-6 px-4 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-2">
             <div className="w-8 h-8 hexagon-shape bg-white/20 flex items-center justify-center">
               <span className="text-lg">⬡</span>
             </div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl md:text-3xl font-bold bg-white text-pink-600 px-2 py-1 hexagon-shape flex items-center justify-center">
-                La
-              </span>
-              <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-200 to-white bg-clip-text text-transparent">
-                Ruche
-              </h1>
-              <span className="text-sm text-pink-200 ml-1">dorée</span>
-            </div>
+            <img
+              src={Logo}
+              alt="La Ruche - Café Boulangerie & Pâtisserie"
+              className="h-20 md:h-20 object-contain"
+            />
             <div className="w-8 h-8 hexagon-shape bg-white/20 flex items-center justify-center">
               <span className="text-lg">⬡</span>
             </div>
           </div>
-          <p className="text-lg text-pink-100">Café Boulangerie & Pâtisserie</p>
+          
         </div>
       </header>
 
