@@ -212,8 +212,8 @@ const LaRucheMenu = () => {
         { name: "2 Omelettes charcuterie", price: "12 dhs" },
         { name: "Tajine khlii aux oeufs", price: "16 dhs" },
         { name: "Toast fromage", price: "07 dhs" },
-        { name: "Toast LA RUCHE", price: "13 dhs" },
-        { name: "Toast fromage, omelette, filet de dinde fumée", price: "", description: "" },
+        { name: "Toast LA RUCHE", price: "13 dhs" , description: "Toast fromage, omelette, filet de dinde fumée" },
+        
       ],
     },
   }
