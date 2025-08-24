@@ -1,7 +1,17 @@
 import React from "react"
 import { Card } from "./ui/card"
+import { useState } from "react"
 
 const LaRucheMenu = () => {
+  const [expandedSections, setExpandedSections] = useState({})
+
+  const toggleSection = (sectionKey) => {
+    setExpandedSections((prev) => ({
+      ...prev,
+      [sectionKey]: !prev[sectionKey],
+    }))
+  }
+
   const menuData = {
     petitsdejeuners: {
       title: "NOS PETITS DÉJEUNERS",
@@ -218,7 +228,6 @@ const LaRucheMenu = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-yellow-50 relative">
-      {/* Golden honeycomb pattern overlay */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -254,35 +263,50 @@ const LaRucheMenu = () => {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {Object.entries(menuData).map(([key, section]) => (
             <div key={key} className="space-y-4">
-              <div className="flex items-center gap-3 mb-4">
+              <div
+                className="flex items-center gap-3 mb-4 cursor-pointer hover:bg-white/50 p-2 rounded-lg transition-colors"
+                onClick={() => toggleSection(key)}
+              >
                 <HexagonIcon />
                 <h2 className="text-lg font-bold text-gray-800">{section.title}</h2>
+                <div className="ml-auto">
+                  <svg
+                    className={`w-5 h-5 text-gray-600 transition-transform ${expandedSections[key] ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
 
-              <div className="space-y-3">
-                {section.items.map((item, index) => (
-                  <Card
-                    key={index}
-                    className="p-4 bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-800 text-base mb-1">{item.name}</h3>
-                        {item.description && (
-                          <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+              {expandedSections[key] && (
+                <div className="space-y-3">
+                  {section.items.map((item, index) => (
+                    <Card
+                      key={index}
+                      className="p-4 bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex justify-between items-start gap-4">
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-gray-800 text-base mb-1">{item.name}</h3>
+                          {item.description && (
+                            <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                          )}
+                        </div>
+                        {item.price && (
+                          <div className="flex-shrink-0">
+                            <span className="inline-block bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                              {item.price}
+                            </span>
+                          </div>
                         )}
                       </div>
-                      {item.price && (
-                        <div className="flex-shrink-0">
-                          <span className="inline-block bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {item.price}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </Card>
-                ))}
-              </div>
+                    </Card>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
